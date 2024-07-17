@@ -13,7 +13,7 @@ app.get("/",(req,res)=>{
 })
 
 app.post("/signin",(req,res)=>{
-    res.send("hi")
+    res.render("signIN.ejs")
 })
 app.post("/signup",(req,res)=>{
     res.render("signUP.ejs")
