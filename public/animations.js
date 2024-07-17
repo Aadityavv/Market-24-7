@@ -16,7 +16,7 @@ signupButton.addEventListener("mouseout",function(event){
 })
 
 function addHoverEvent(button){
-    button.style.transform = "scale(1.1)";
+    button.style.transform = "scale(1.05)";
     button.style.transition = "transform 0.5 ease"
     button.style.backgroundColor = "#28336b"
 }
