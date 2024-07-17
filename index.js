@@ -8,6 +8,7 @@ app.set('view engine', 'ejs'); // Set EJS as the view engine
 
 
 let responseMessage="";
+let booleanResponse = ""
 
 const db = new pg.Client({
     user:"postgres",
@@ -36,6 +37,7 @@ app.get("/",(req,res)=>{
 app.post("/signin",(req,res)=>{
     res.render("signIN.ejs")
 })
+
 app.post("/signup",(req,res)=>{
     res.render("signUP.ejs")
 })
@@ -50,13 +52,17 @@ app.post("/",async(req,res)=>{
     try {
         await db.query("INSERT INTO users (username, phno, email, userPassword) VALUES ($1, $2, $3, $4)", [name, phno, email, password]);
         responseMessage = "Signed up successfully. Now you can sign in easily!";
+        booleanResponse = "True";
+
     } catch (err) {
-        responseMessage = "Error signing you up";
+        responseMessage = "Account already exists. Error signing you up";
+        booleanResponse = "null"
         console.log(err.stack);
     }
 
     res.render("signUP", {
-        responseMessage: responseMessage
+        responseMessage: responseMessage,
+        booleanResponse : booleanResponse
     });
 })
 

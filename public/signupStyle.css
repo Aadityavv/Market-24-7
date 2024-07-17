@@ -87,4 +87,15 @@ form > input {
     display: flex;
     justify-content: center;
     z-index: 1;
+    flex-direction: column;
+    
+}
+#response button{
+    background-color: transparent;
+    border-radius: 20px;
+    height: 30px;
+    border-color: white;
+}
+#response button a{
+    text-decoration: none;
 }

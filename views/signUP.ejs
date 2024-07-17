@@ -12,12 +12,14 @@
 </head>
 <body>
     <div class="blurBG"></div>
-    <p id="response">
+    <div id="response">
         <% if (locals.responseMessage) { %>
             <p id="response"><%= responseMessage %></p>
         <% } %>
-        
-    </p>
+        <% if(locals.booleanResponse){ %>
+            <button><a href="signIN.ejs">Head over to sign in page </a></button>
+            <% } %>
+        </div>
 
     <div id="gridBlock">
     <div id="logo">
