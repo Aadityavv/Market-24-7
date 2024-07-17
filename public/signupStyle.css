@@ -1,18 +1,17 @@
-*{
+* {
     color: white;
     font-family: "Outfit", sans-serif;  
 }
-body{
-    margin: 0%;
+body {
+    margin: 0;
     background-color: #0C1A2E;
     overflow-x: hidden;
     overflow-y: hidden;
-    
 }
-.blurBG{
+.blurBG {
     height: 100%;
     width: 50%;
-    z-index: -1 ;
+    z-index: -1;
     background-color: #40a0e5;
     margin-left: -2%;
     margin-top: -2%;
@@ -21,58 +20,71 @@ body{
     filter: blur(150px); 
     position: absolute; /* Change to absolute positioning */
 }
-#gridBlock{
+#gridBlock {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    padding: 0% 10% 0% 10%;
+    padding: 0 10%;
     height: 500px;
     align-items: center;
     gap: 15%;
+    z-index: 5;
 }
-#logo{
+#logo {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-form{
+form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     /* align-items: center; */
     /* padding-top: 10%; */
 }
-h1{
+h1 {
     font-size: 75px;
-    margin: 0%;
+    margin: 0;
 }
-p{
+p {
     font-size: 25px;
-    margin: 0%;
+    margin: 0;
     font-weight: 200;
 }
-h2{
+h2 {
     font-size: 50px;
     justify-content: center;
     align-items: center;
     display: flex;
 }
-form>input{
+form > input {
     margin-bottom: 5%;
     border-radius: 50px;
     width: 100%;
     height: 30px;
     border-color: white;
     margin-top: 1%;
+    color: darkblue;
 }
-#submit{
+#submit {
     align-self: flex-end;
     width: 40%;
     height: 40px;
     background-color: #40a0e5;
-    margin-top:2% ;
+    margin-top: 2%;
 }
-#formElement{
+#formElement {
     margin-top: 5%;
+}
+
+#response {
+    position: absolute; /* Changed to absolute */
+    top: 10px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
 }

@@ -12,6 +12,13 @@
 </head>
 <body>
     <div class="blurBG"></div>
+    <p id="response">
+        <% if (locals.responseMessage) { %>
+            <p id="response"><%= responseMessage %></p>
+        <% } %>
+        
+    </p>
+
     <div id="gridBlock">
     <div id="logo">
         <h1>
@@ -21,7 +28,7 @@
     </div>
     <div id="formElement">
         <h2>Sign Up</h2>
-        <form action="/homePage" method="post">
+        <form action="/" method="post">
 
             <label for="name">FullName </label>
             <input type="text" name="name" id="name" placeholder="Enter your name">
@@ -36,6 +43,7 @@
             <input type="password" name="password" id="password" placeholder="Enter your Password">
 
             <input type="submit" name="Register" id="submit">
+            
 
         </form>
     </div>

@@ -4,6 +4,27 @@ import pg from "pg";
 
 const app = express();
 const port = 3000;
+app.set('view engine', 'ejs'); // Set EJS as the view engine
+
+
+let responseMessage="";
+
+const db = new pg.Client({
+    user:"postgres",
+    host:"localhost",
+    password:"Aaditya",
+    database:"Market_24/7",
+    port:5434
+})
+
+db.connect(err=>{
+    if (err) {
+        console.log(`Error connecting to database ${err.stack}`);
+    }
+    else{
+        console.log(`Connected to database successfully`);
+    }
+});
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"))
@@ -17,6 +38,26 @@ app.post("/signin",(req,res)=>{
 })
 app.post("/signup",(req,res)=>{
     res.render("signUP.ejs")
+})
+app.post("/",async(req,res)=>{
+    const name = req.body.name;
+    const phno = req.body.phno;
+    const email = req.body.email;
+    const password = req.body.password;
+
+    console.log(name,phno,email,password)
+
+    try {
+        await db.query("INSERT INTO users (username, phno, email, userPassword) VALUES ($1, $2, $3, $4)", [name, phno, email, password]);
+        responseMessage = "Signed up successfully. Now you can sign in easily!";
+    } catch (err) {
+        responseMessage = "Error signing you up";
+        console.log(err.stack);
+    }
+
+    res.render("signUP", {
+        responseMessage: responseMessage
+    });
 })
 
 app.listen(port,()=>{
