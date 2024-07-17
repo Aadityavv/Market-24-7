@@ -12,6 +12,13 @@ app.get("/",(req,res)=>{
     res.render("login.ejs");
 })
 
+app.post("/signin",(req,res)=>{
+    res.send("hi")
+})
+app.post("/signup",(req,res)=>{
+    res.send("hi")
+})
+
 app.listen(port,()=>{
     console.log(`listening on port ${port}`);
 })
