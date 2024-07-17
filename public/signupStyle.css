@@ -80,21 +80,24 @@ form > input {
 
 #response {
     position: absolute; /* Changed to absolute */
-    top: 10px; /* Adjust as needed */
+    top: 10px; 
     left: 50%;
     transform: translateX(-50%);
     font-size: 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
     z-index: 1;
     flex-direction: column;
-    
+    width: 100%;
 }
 #response button{
     background-color: transparent;
     border-radius: 20px;
-    height: 30px;
+    margin-top: 5%;
     border-color: white;
+    width: 20%;
+    top: 30px; 
 }
 #response button a{
     text-decoration: none;

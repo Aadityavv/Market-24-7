@@ -8,7 +8,7 @@ app.set('view engine', 'ejs'); // Set EJS as the view engine
 
 
 let responseMessage="";
-let booleanResponse = ""
+let booleanResponse = null;
 
 const db = new pg.Client({
     user:"postgres",
@@ -56,7 +56,7 @@ app.post("/",async(req,res)=>{
 
     } catch (err) {
         responseMessage = "Account already exists. Error signing you up";
-        booleanResponse = "null"
+        booleanResponse = null;
         console.log(err.stack);
     }
 
