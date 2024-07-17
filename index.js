@@ -41,6 +41,9 @@ app.post("/signin",(req,res)=>{
 app.post("/signup",(req,res)=>{
     res.render("signUP.ejs")
 })
+app.get("/signIN", (req, res) => { // Add this route
+    res.render("signIN.ejs");
+});
 app.post("/",async(req,res)=>{
     const name = req.body.name;
     const phno = req.body.phno;
