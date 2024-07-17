@@ -16,7 +16,7 @@ app.post("/signin",(req,res)=>{
     res.send("hi")
 })
 app.post("/signup",(req,res)=>{
-    res.send("hi")
+    res.render("signUP.ejs")
 })
 
 app.listen(port,()=>{
