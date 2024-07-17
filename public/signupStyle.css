@@ -12,8 +12,8 @@ body{
 .blurBG{
     height: 100%;
     width: 50%;
-    z-index: 1 ;
-    background-color: #D41FF1;
+    z-index: -1 ;
+    background-color: #40a0e5;
     margin-left: -2%;
     margin-top: -2%;
     display: inline-block;
