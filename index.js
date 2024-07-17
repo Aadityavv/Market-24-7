@@ -69,6 +69,19 @@ app.post("/",async(req,res)=>{
     });
 })
 
+app.post("/homePage",async(req,res)=>{
+    const email = req.body.email;
+    const password = req.body.password;
+
+    const actualPassword = await db.query("SELECT userpassword FROM users WHERE email=($1)",[email]);
+    console.log(actualPassword.rows[0].userpassword);
+    if(password === actualPassword.rows[0].userpassword){
+        res.send("hi")
+}
+    else{
+        res.send("wrong password")
+    }});
+
 app.listen(port,()=>{
     console.log(`listening on port ${port}`);
 })
