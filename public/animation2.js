@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.body.style.backgroundColor = '#0C1A2E';
         document.body.style.color = 'white';
-        document.querySelectorAll('input').forEach(input => input.style.color = 'white');
+        document.querySelectorAll('input').forEach(input => input.style.color = 'black');
         document.getElementById('toggleTheme').style.color = 'white';
         document.querySelector(".blurBG").style.backgroundColor = "#40a0e5"
         document.getElementById("logo").style.color = 'black'
