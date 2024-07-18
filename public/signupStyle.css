@@ -75,7 +75,7 @@ form > input {
 }
 #formElement {
     margin-top: 15%;
-    background-color: #4258c8;
+    background-color: #000000;
     padding: 5%;
     border-radius: 5%;
 }
@@ -89,9 +89,12 @@ form > input {
 }
 
 /* Light theme styles */
-body.light-theme * {
-    color: black !important;
-    /* background-color: #8d64fd; */
+body.light-theme h1 {
+        color: black;
+}
+
+body.light-theme p {
+    color: black;
 }
 
 @keyframes rightLeftMotion{
