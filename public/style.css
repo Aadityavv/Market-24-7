@@ -20,7 +20,7 @@ body {
     z-index: 2;
 }
 #hero h1 {
-    font-size: 75px;
+    font-size: 400%;
     margin: 0;
 }
 #hero h2 {

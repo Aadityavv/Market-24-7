@@ -9,7 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function addHoverEvent(button) {
         button.style.transform = "scale(1.05)";
         button.style.transition = "transform 0.5s ease";
-        button.style.backgroundColor = "#28336b";
+        if ($('body').hasClass('light-theme')) {
+            button.style.backgroundColor = "#cacdef";
+        } else {
+            button.style.backgroundColor = "#28336b";
+        }
     }
 
     function removeHoverEvent(button) {
@@ -37,16 +41,26 @@ document.addEventListener("DOMContentLoaded", () => {
         if (theme === 'light') {
             $('body').addClass('light-theme');
             $('#toggleTheme').text('Dark Mode');
-            $('body').css({'background-color': 'white', 'color': 'black'});
-            $('input').css({'color': 'black'});
-            $('#toggleTheme').css({'color': 'black'});
+            applyLightTheme();
         } else {
             $('body').removeClass('light-theme');
             $('#toggleTheme').text('Light Mode');
-            $('body').css({'background-color': '#0C1A2E', 'color': 'white'});
-            $('input').css({'color': 'white'});
-            $('#toggleTheme').css({'color': 'white'});
+            applyDarkTheme();
         }
+    }
+
+    function applyLightTheme() {
+        $('body').css({'background-color': 'white', 'color': 'black'});
+        $('input').css({'color': 'black'});
+        $('#toggleTheme').css({'color': 'black'});
+        $('*').css({'color': 'black'});
+    }
+
+    function applyDarkTheme() {
+        $('body').css({'background-color': '#0C1A2E', 'color': 'white'});
+        $('input').css({'color': 'white'});
+        $('#toggleTheme').css({'color': 'white'});
+        $('*').css({'color': 'white'});
     }
 
     // Call loadTheme on page load
@@ -57,20 +71,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if ($('body').hasClass('light-theme')) {
             $('body').removeClass('light-theme');
             $(this).text('Light Mode');
-            $('body').css({'background-color': '#0C1A2E', 'color': 'white'});
-            $('input').css({'color': 'white'});
-            $('#toggleTheme').css({'color': 'white'});
-            $('*').css({'color':'white'})
-
+            
+            applyDarkTheme();
             localStorage.setItem('theme', 'dark');
         } else {
             $('body').addClass('light-theme');
             $(this).text('Dark Mode');
-            $('body').css({'background-color': 'white', 'color': 'black'});
-            $('input').css({'color': 'black'});
-            $('#toggleTheme').css({'color': 'black'});
-            $('*').css({'color':'black'})
-            $('p').css({'color':'black'})
+            applyLightTheme();
             localStorage.setItem('theme', 'light');
         }
     });
