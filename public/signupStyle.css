@@ -78,31 +78,7 @@ form > input {
     margin-top: 5%;
 }
 
-#response {
-    position: absolute; /* Changed to absolute */
-    top: 10px; 
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    flex-direction: column;
-    width: 100%;
-}
-#response button{
-    background-color: transparent;
-    border-radius: 20px;
-    margin-top: 5%;
-    border-color: white;
-    top: 30px; 
-    scale: 1.5;
-    width: 15%;
-}
-#response button a{
-    text-decoration: none;
-}
+
 #toggleTheme{
     z-index: 5;
     background-color: transparent;

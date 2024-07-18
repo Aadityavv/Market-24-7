@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         $('input').css({'color': 'black'});
         $('#toggleTheme').css({'color': 'black'});
         $('*').css({'color': 'black'});
+        $('.homeButtons').css({'color': 'black'});
     }
 
     function applyDarkTheme() {
@@ -62,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         $('#toggleTheme').css({'color': 'white'});
         $('*').css({'color': 'white'});
         $('input').css({'color': 'black'});
+        $('.homeButtons').css({'color': 'white'});
     }
 
     // Call loadTheme on page load

@@ -41,10 +41,15 @@ app.post("/signin",(req,res)=>{
 app.post("/signup",(req,res)=>{
     res.render("signUP.ejs")
 })
-app.get("/signIN", (req, res) => { // Add this route
+app.get("/signIN", (err, res) => { // Add this route
+    if(err){
+        res.send("invalid id password")
+    }
+    else{
     res.render("signIN.ejs");
+    }
 });
-app.post("/",async(req,res)=>{
+app.post("/SignedUP",async(req,res)=>{
     const name = req.body.name;
     const phno = req.body.phno;
     const email = req.body.email;
@@ -56,17 +61,14 @@ app.post("/",async(req,res)=>{
         await db.query("INSERT INTO users (username, phno, email, userPassword) VALUES ($1, $2, $3, $4)", [name, phno, email, password]);
         responseMessage = "Signed up successfully. Now you can sign in easily!";
         booleanResponse = "True";
-
+        res.send("HI")
     } catch (err) {
         responseMessage = "Account already exists. Error signing you up";
         booleanResponse = null;
         console.log(err.stack);
+        res.send("USER ALREADY EXISTS")
     }
 
-    res.render("signUP", {
-        responseMessage: responseMessage,
-        booleanResponse : booleanResponse
-    });
 })
 
 app.post("/homePage",async(req,res)=>{
@@ -83,7 +85,6 @@ app.post("/homePage",async(req,res)=>{
         res.send("wrong password")
         console.log(`Access Denied`)
     }});
-
 app.listen(port,()=>{
     console.log(`listening on port ${port}`);
 })

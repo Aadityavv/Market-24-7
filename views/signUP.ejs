@@ -16,17 +16,8 @@
 
 </head>
 <body>
-    <button id="toggleTheme" class="btn btn" style="position: absolute; top: 20px; right: 20px;">Dark Mode</button>
+    <button id="toggleTheme" class="btn btn-light" style="position: absolute; top: 20px; right: 20px;">Dark Mode</button>
     <div class="blurBG"></div>
-    <div id="response">
-        <% if (locals.responseMessage) { %>
-            <p id="response"><%= responseMessage %></p>
-        <% } %>
-        <% if(locals.booleanResponse){ %>
-            <button id="responseButton"><a href="/signIN">Head over to sign in page </a></button>
-            <% } %>
-        </div>
-
     <div id="gridBlock">
     <div id="logo">
         <h1 style="font-size: 400%;">
@@ -36,7 +27,7 @@
     </div>
     <div id="formElement">
         <h2>Sign Up</h2>
-        <form action="/" method="post" style="color:black">
+        <form action="/SignedUP" method="post" style="color:black">
 
             <label for="name">FullName </label>
             <input type="text" name="name" id="name" placeholder="Enter your name">
