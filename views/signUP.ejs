@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
 </head>
 <body>
     <div class="blurBG"></div>
@@ -17,7 +19,7 @@
             <p id="response"><%= responseMessage %></p>
         <% } %>
         <% if(locals.booleanResponse){ %>
-            <button><a href="/signIN">Head over to sign in page </a></button>
+            <button id="responseButton"><a href="/signIN">Head over to sign in page </a></button>
             <% } %>
         </div>
 
@@ -26,7 +28,7 @@
         <h1>
             Market 24/7
         </h1>
-        <p>Your Market Your Way</p>
+        <p id="slogan"></p>
     </div>
     <div id="formElement">
         <h2>Sign Up</h2>
@@ -50,5 +52,6 @@
         </form>
     </div>
 </div>
+<script src="./animations.js"></script>
 </body>
 </html>

@@ -77,9 +77,11 @@ app.post("/homePage",async(req,res)=>{
     console.log(actualPassword.rows[0].userpassword);
     if(password === actualPassword.rows[0].userpassword){
         res.send("hi")
+        console.log(`Access Granted to user ${email}`)
 }
     else{
         res.send("wrong password")
+        console.log(`Access Denied`)
     }});
 
 app.listen(port,()=>{

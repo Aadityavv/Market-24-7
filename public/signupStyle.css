@@ -96,8 +96,9 @@ form > input {
     border-radius: 20px;
     margin-top: 5%;
     border-color: white;
-    width: 20%;
     top: 30px; 
+    scale: 1.5;
+    width: 15%;
 }
 #response button a{
     text-decoration: none;
