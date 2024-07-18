@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('input').forEach(input => input.style.color = 'black');
         document.getElementById('toggleTheme').style.color = 'black';
         document.querySelectorAll('*').forEach(element => element.style.color = 'black');
-        document.querySelector(".blurBG").style.backgroundColor="#585DCF";
+        document.querySelector(".blurBG").style.backgroundColor="#8d64fd";
     }
 
     function applyDarkTheme() {
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('input').forEach(input => input.style.color = 'white');
         document.getElementById('toggleTheme').style.color = 'white';
         document.querySelectorAll('*').forEach(element => element.style.color = 'white');
-        document.querySelector(".blurBG").style.backgroundColor = "#40a0e5"
+        document.querySelector(".blurBG").style.backgroundColor = "#41a0e5"
         }
 
     // Call loadTheme on page load
