@@ -7,25 +7,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function addHoverEvent(button) {
-        button.style.transform = "scale(1.05)";
-        button.style.transition = "transform 0.5s ease";
-        if ($('body').hasClass('light-theme')) {
+        if (document.body.classList.contains('light-theme')) {
             button.style.backgroundColor = "#cacdef";
         } else {
             button.style.backgroundColor = "#28336b";
         }
+        button.style.transform = "scale(1.05)";
+        button.style.transition = "transform 0.5s ease, background-color 0.5s ease";
     }
 
     function removeHoverEvent(button) {
         button.style.transform = "scale(1)";
-        button.style.transition = "transform 0.5s ease";
+        button.style.transition = "transform 0.5s ease, background-color 0.5s ease";
         button.style.backgroundColor = "transparent";
     }
 
     // Initialize GSAP timeline for slogan animation
-    var textArray = ["Your Market Your Way", "One step Solution for all your needs", "Clothings, Electronics, Groceries and more"];
-    var textElement = $("#slogan");
-    var timeline = gsap.timeline({ repeat: -1 });
+    const textArray = ["Your Market Your Way", "One step Solution for all your needs", "Clothings, Electronics, Groceries and more"];
+    const textElement = $("#slogan");
+    const timeline = gsap.timeline({ repeat: -1 });
 
     textArray.forEach(function(element) {
         timeline.to(textElement, { duration: 0.5, opacity: 0, onComplete: function() {
@@ -39,49 +39,56 @@ document.addEventListener("DOMContentLoaded", () => {
     function loadTheme() {
         const theme = localStorage.getItem('theme');
         if (theme === 'light') {
-            $('body').addClass('light-theme');
-            $('#toggleTheme').text('Dark Mode');
+            document.body.classList.add('light-theme');
+            document.getElementById('toggleTheme').textContent = 'Dark Mode';
             applyLightTheme();
         } else {
-            $('body').removeClass('light-theme');
-            $('#toggleTheme').text('Light Mode');
+            document.body.classList.remove('light-theme');
+            document.getElementById('toggleTheme').textContent = 'Light Mode';
             applyDarkTheme();
         }
     }
 
     function applyLightTheme() {
-        $('body').css({'background-color': 'white', 'color': 'black'});
-        $('input').css({'color': 'black'});
-        $('#toggleTheme').css({'color': 'black'});
-        $('*').css({'color': 'black'});
-        $('.homeButtons').css({'color': 'black'});
+        document.body.style.backgroundColor = 'white';
+        document.body.style.color = 'black';
+        document.querySelectorAll('input').forEach(input => input.style.color = 'black');
+        document.getElementById('toggleTheme').style.color = 'black';
+        document.querySelectorAll('*').forEach(element => element.style.color = 'black');
+        document.getElementById("movingCursor").style.backgroundColor="#585DCF";
     }
 
     function applyDarkTheme() {
-        $('body').css({'background-color': '#0C1A2E', 'color': 'white'});
-        
-        $('#toggleTheme').css({'color': 'white'});
-        $('*').css({'color': 'white'});
-        $('input').css({'color': 'black'});
-        $('.homeButtons').css({'color': 'white'});
+        document.body.style.backgroundColor = '#0C1A2E';
+        document.body.style.color = 'white';
+        document.querySelectorAll('input').forEach(input => input.style.color = 'white');
+        document.getElementById('toggleTheme').style.color = 'white';
+        document.querySelectorAll('*').forEach(element => element.style.color = 'white');
+        document.getElementById("movingCursor").style.backgroundColor="#40a0e5";
     }
 
     // Call loadTheme on page load
     loadTheme();
 
     // Toggle theme functionality
-    $('#toggleTheme').on('click', function() {
-        if ($('body').hasClass('light-theme')) {
-            $('body').removeClass('light-theme');
-            $(this).text('Light Mode');
-            
+    document.getElementById('toggleTheme').addEventListener('click', function() {
+        if (document.body.classList.contains('light-theme')) {
+            document.body.classList.remove('light-theme');
+            this.textContent = 'Light Mode';
             applyDarkTheme();
             localStorage.setItem('theme', 'dark');
         } else {
-            $('body').addClass('light-theme');
-            $(this).text('Dark Mode');
+            document.body.classList.add('light-theme');
+            this.textContent = 'Dark Mode';
             applyLightTheme();
             localStorage.setItem('theme', 'light');
         }
+    });
+
+    // Move blur circle with cursor
+    const blurCircle = document.querySelector(".blurBG");
+    document.addEventListener("mousemove", (e) => {
+        blurCircle.style.left = `${e.clientX - blurCircle.offsetWidth / 2}px`;
+        blurCircle.style.top = `${e.clientY - blurCircle.offsetHeight / 2}px`;
     });
 });
