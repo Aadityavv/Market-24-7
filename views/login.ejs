@@ -6,32 +6,31 @@
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="./animations.js"></script>
 </head>
 <body>
+    <button id="toggleTheme" class="btn btn" style="position: absolute; top: 20px; right: 20px;">Light Mode</button>
     <div class="blurCircle"></div>
-    <div id="hero">
-    <h1>
-        Market 24/7
-    </h1>
-    <h2 id="slogan">Your Market Your Way</h2>
-    <div id="formElement">
-    <form action="/signup" method="post">
-    <input type="submit" value="Sign up" class="button" id="signUP">
-    </form>
-    <form action="/signin" method="post">
-    <input type="submit" value="Sign in" class="button" id="signIN">
-    </form>
-</div>
-</div>
-<div class="bottomImage">
-    <img src="./images/istockphoto-1368585997-612x612-Photoroom.png" >
-</div>
-<div class="blurCircle2"></div>
-<script src="./animations.js"></script>
+    <div id="hero" class="text-center">
+        <h1>Market 24/7</h1>
+        <h2 id="slogan">Your Market Your Way</h2>
+        <div id="formElement">
+            <form action="/signup" method="post" class="d-inline">
+                <input type="submit" value="Sign up" class="button" id="signUP">
+            </form>
+            <form action="/signin" method="post" class="d-inline">
+                <input type="submit" value="Sign in" class="button" id="signIN">
+            </form>
+        </div>
+    </div>
+    <div class="bottomImage">
+        <img src="./images/istockphoto-1368585997-612x612-Photoroom.png" class="img-fluid">
+    </div>
+    <div class="blurCircle2"></div>
 </body>
 </html>

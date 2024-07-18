@@ -48,9 +48,9 @@ h1 {
     margin: 0;
 }
 p {
-    font-size: 25px;
+    font-size: 20px;
     margin: 0;
-    font-weight: 200;
+    font-weight: 300;
 }
 h2 {
     font-size: 50px;
@@ -102,4 +102,10 @@ form > input {
 }
 #response button a{
     text-decoration: none;
+}
+#toggleTheme{
+    z-index: 5;
+    background-color: transparent;
+    border-radius: 20px;
+    font-weight: 600;
 }
