@@ -58,9 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function applyDarkTheme() {
         $('body').css({'background-color': '#0C1A2E', 'color': 'white'});
-        $('input').css({'color': 'white'});
+        
         $('#toggleTheme').css({'color': 'white'});
         $('*').css({'color': 'white'});
+        $('input').css({'color': 'black'});
     }
 
     // Call loadTheme on page load
