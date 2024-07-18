@@ -55,6 +55,8 @@ body {
     border-radius: 50%;
     filter: blur(200px);
     position: absolute;
+    animation: upDownMotion 3s ease-in-out infinite;
+
 }
 .blurCircle2 {
     height: 50%;
@@ -68,6 +70,8 @@ body {
     filter: blur(150px);
     position: absolute;
     overflow: hidden;
+    animation: downUpMotion 3s ease-in-out infinite;
+
 }
 .bottomImage {
     position: relative;
@@ -82,4 +86,15 @@ body {
     border-radius: 20px;
     font-weight: 600;
     
+}
+@keyframes upDownMotion {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(+50%); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes downUpMotion {
+    0% { transform: translateY(+20%); }
+    50% { transform: translateY(0); }
+    100% { transform: translateY(+20%); }
 }
