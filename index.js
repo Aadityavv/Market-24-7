@@ -34,11 +34,7 @@ app.get("/",(req,res)=>{
     res.render("login.ejs");
 })
 
-app.post("/signin",(req,res)=>{
-    res.render("signIN.ejs")
-})
-
-app.post("/signup",(req,res)=>{
+app.get("/signup",(req,res)=>{
     res.render("signUP.ejs")
 })
 app.get("/signIN", (req, res) => { // Add this route

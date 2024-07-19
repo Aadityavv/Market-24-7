@@ -126,6 +126,11 @@ body.light-theme p {
 #ShoppingCart{
     animation: sideBysideMotionCart 3s infinite linear;
     margin-left: -35%;
-    margin-top: -10%;
+    margin-top: -11%;
     z-index: 0;
 }
+/* @media screen and (max-width: 720px) {
+    body {
+        overflow-y: visible;
+    }
+} */
