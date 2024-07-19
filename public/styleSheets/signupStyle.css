@@ -131,28 +131,48 @@ body.light-theme p {
     margin-top: -40vh;
     z-index: 0;
 }
+
 @media screen and (max-width:915px) {
     
     body{
         height: 50vh;
         width: auto;
         overflow-x: hidden;
+        overflow-y: hidden;
     }
-    #gridBlock{
-        margin-top: 20vh;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-        margin-left: 10vh;
+    #logo{
+        display: none;
     }
+    
     #toggleTheme{
-        margin-right: -30%;
+        
+        margin-top: 1vh;
+        z-index: 3;
+        margin-right: 0%;
     }
-    #Shopping{
+
+    @keyframes sideBysideMotion {
+        0% { transform: translateX(-55%); }
+        100% { transform: translateX(70vh); }
+    }
+    .signINsignUPanimation{
         animation: sideBysideMotion 3s infinite linear;
         margin-left: -5%;
         margin-top: 1vh;
         z-index: 2;
         /* display: none; */
+    }
+    footer{
+        display: inline;
+        margin-left: -10%;
+        /* margin-right: -50%; */
+        z-index: 2;
+        width: 140%;
+        overflow: hidden;
+    }
+    #formElement{
+        width: 40vh;
+        margin: 0% 5% 5% 6% ;
+        z-index: 2;
     }
 }
