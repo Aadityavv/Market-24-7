@@ -126,14 +126,15 @@ body {
         overflow-y: hidden;
     }
     #hero{
-        margin-top: 20vh;
+        margin-top: 25vh;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
-        margin-left: 10vh;
+        margin-left: 15vh;
     }
     #toggleTheme{
         margin-right: -30%;
+        margin-top: 5vh;
     }
     @keyframes sideBysideMotion {
         0% { transform: translateX(-55%); }
@@ -145,5 +146,19 @@ body {
         margin-top: 1vh;
         z-index: 2;
         /* display: none; */
+    }
+    .blurCircle2{
+        z-index: -1;
+        margin-left: 40%;
+        margin-top: -30vh;
+        filter: blur(200px);
+    }
+    footer{
+        display: inline;
+        margin-left: -10%;
+        /* margin-right: -50%; */
+        z-index: 2;
+        width: 140%;
+        overflow: hidden;
     }
 }
