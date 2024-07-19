@@ -94,3 +94,4 @@ document.addEventListener("DOMContentLoaded", () => {
         blurCircle.style.top = `${e.clientY - blurCircle.offsetHeight / 2}px`;
     });
 });
+
