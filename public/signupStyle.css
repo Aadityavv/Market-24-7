@@ -64,6 +64,10 @@ form > input {
     border-color: white;
     margin-top: 1%;
     color: darkblue;
+    z-index: 3;
+}
+form > label{
+    z-index: 3;
 }
 #submit {
     align-self: flex-end;
@@ -78,7 +82,7 @@ form > input {
     padding: 3%;
     border-radius: 5%;
     padding-top: 0%;
-    z-index: 3;
+    
 }
 
 
