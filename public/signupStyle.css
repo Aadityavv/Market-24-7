@@ -131,8 +131,28 @@ body.light-theme p {
     margin-top: -40vh;
     z-index: 0;
 }
-/* @media screen and (max-width: 720px) {
-    body {
-        overflow-y: visible;
+@media screen and (max-width:915px) {
+    
+    body{
+        height: 50vh;
+        width: auto;
+        overflow-x: hidden;
     }
-} */
+    #gridBlock{
+        margin-top: 20vh;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        margin-left: 10vh;
+    }
+    #toggleTheme{
+        margin-right: -30%;
+    }
+    #Shopping{
+        animation: sideBysideMotion 3s infinite linear;
+        margin-left: -5%;
+        margin-top: 1vh;
+        z-index: 2;
+        /* display: none; */
+    }
+}
