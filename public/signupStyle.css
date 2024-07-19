@@ -78,6 +78,7 @@ form > input {
     padding: 3%;
     border-radius: 5%;
     padding-top: 0%;
+    z-index: 3;
 }
 
 
@@ -112,4 +113,15 @@ body.light-theme p {
     margin-top: -20%;
     z-index: 5;
     margin-left: 79%;
+}
+@keyframes sideBysideMotionCart {
+    0% { transform: translateX(-15%); }
+    100% { transform: translateX(625%); }
+}
+
+#ShoppingCart{
+    animation: sideBysideMotionCart 3s infinite linear;
+    margin-left: -35%;
+    margin-top: -10%;
+    z-index: 0;
 }
