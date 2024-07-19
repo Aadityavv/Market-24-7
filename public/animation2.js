@@ -40,11 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const theme = localStorage.getItem('theme');
         if (theme === 'light') {
             document.body.classList.add('light-theme');
-            document.getElementById('toggleTheme').textContent = 'Dark Mode';
+            document.getElementById('toggleTheme').textContent = 'Dark';
             applyLightTheme();
         } else {
             document.body.classList.remove('light-theme');
-            document.getElementById('toggleTheme').textContent = 'Light Mode';
+            document.getElementById('toggleTheme').textContent = 'Light';
             applyDarkTheme();
         }
     }
@@ -76,12 +76,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('toggleTheme').addEventListener('click', function() {
         if (document.body.classList.contains('light-theme')) {
             document.body.classList.remove('light-theme');
-            this.textContent = 'Light Mode';
+            this.textContent = 'Light';
             applyDarkTheme();
             localStorage.setItem('theme', 'dark');
         } else {
             document.body.classList.add('light-theme');
-            this.textContent = 'Dark Mode';
+            this.textContent = 'Dark';
             applyLightTheme();
             localStorage.setItem('theme', 'light');
         }
