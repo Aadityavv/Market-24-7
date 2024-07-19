@@ -96,7 +96,7 @@ body {
 }
 @keyframes sideBysideMotion {
     0% { transform: translateX(-15%); }
-    100% { transform: translateX(325%); }
+    100% { transform: translateX(445%); }
 }
 
 .blurBG {
