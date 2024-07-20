@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const buttons = document.querySelectorAll("#signIN, #signUP, #responseButton");
+    const buttons = document.querySelectorAll("#signIN, #signUP, #responseButton,#toggleTheme");
 
     buttons.forEach(button => {
         button.addEventListener("mouseover", () => addHoverEvent(button));
