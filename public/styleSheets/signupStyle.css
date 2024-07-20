@@ -146,7 +146,7 @@ body.light-theme p {
     
     #toggleTheme{
         
-        margin-top: 1vh;
+        margin-top: 2vh;
         z-index: 3;
         margin-right: 0%;
     }
@@ -176,5 +176,12 @@ body.light-theme p {
         z-index: 2;
         padding: 2%;
         border-radius:20px ;
+    }
+    #flirtingDog{
+        padding-right: 1.5%;
+    }
+    #cat{
+        margin-bottom: 5%;
+        padding-left: 3%;
     }
 }
