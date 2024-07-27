@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("logo").style.color = 'black'
         document.querySelector(".blurBG").style.backgroundColor="#585DCF";
         
+        
     }
 
     function applyDarkTheme() {
