@@ -72,6 +72,7 @@ app.post("/homepage",async(req,res)=>{
     const email = req.body.email;
     const password = req.body.password;
 
+    try{
     const actualPassword = await db.query("SELECT userpassword FROM users WHERE email=($1)",[email]);
 
     const actualHashedPassword=actualPassword.rows[0].userpassword;
@@ -89,7 +90,13 @@ res.send("hi")            }
               res.send("Incorrect Password");
             }
           }
-    })});
+    })}
+
+    catch(error){
+        res.send(`User does not exist`)
+        console.log(`Unknown person tried to access the website`)
+    }
+});
 app.listen(port,()=>{
     console.log(`listening on port ${port}`);
 })
