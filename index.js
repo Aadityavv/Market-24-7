@@ -1,10 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
 import pg from "pg";
+import bcrypt, { hash } from "bcrypt";
 
 const app = express();
 const port = 4000;
 app.set('view engine', 'ejs'); // Set EJS as the view engine
+const saltRounds = 10;
 
 
 let responseMessage="";
@@ -46,36 +48,48 @@ app.post("/SignedUP",async(req,res)=>{
     const email = req.body.email;
     const password = req.body.password;
 
-    console.log(name,phno,email,password)
-
-    try {
-        await db.query("INSERT INTO users (username, phno, email, userPassword) VALUES ($1, $2, $3, $4)", [name, phno, email, password]);
-        responseMessage = "Signed up successfully. Now you can sign in easily!";
-        booleanResponse = "True";
-        res.send("HI")
-    } catch (err) {
-        responseMessage = "Account already exists. Error signing you up";
-        booleanResponse = null;
-        console.log(err.stack);
-        res.send("USER ALREADY EXISTS")
-    }
-
-})
+    bcrypt.hash(password,saltRounds,async(err,hash)=>{
+        if(err) console.log(`Error getting hash value ${err.stack}`);
+        else{
+            console.log(name,phno,email,hash)
+            try {
+                await db.query("INSERT INTO users (username, phno, email, userPassword) VALUES ($1, $2, $3, $4)", [name, phno, email, hash]);
+                responseMessage = "Signed up successfully. Now you can sign in easily!";
+                booleanResponse = "True";
+                res.send("HI")
+            } catch (err) {
+                responseMessage = "Account already exists. Error signing you up";
+                booleanResponse = null;
+                console.log(err.stack);
+                res.send("USER ALREADY EXISTS")
+            }
+        
+        }
+        })
+    })
 
 app.post("/homepage",async(req,res)=>{
     const email = req.body.email;
     const password = req.body.password;
 
     const actualPassword = await db.query("SELECT userpassword FROM users WHERE email=($1)",[email]);
+
+    const actualHashedPassword=actualPassword.rows[0].userpassword;
+
     console.log(actualPassword.rows[0].userpassword);
-    if(password === actualPassword.rows[0].userpassword){
-        res.render("homepage.ejs")
-        console.log(`Access Granted to user ${email}`)
-}
-    else{
-        res.send("wrong password")
-        console.log(`Access Denied`)
-    }});
+
+    bcrypt.compare(password,actualHashedPassword,(err,result)=>{
+        if(err) {
+            res.send(`Wrong password`)
+        }
+        else{
+            if(result){
+res.send("hi")            }
+            else{
+              res.send("Incorrect Password");
+            }
+          }
+    })});
 app.listen(port,()=>{
     console.log(`listening on port ${port}`);
 })
