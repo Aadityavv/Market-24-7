@@ -84,7 +84,7 @@ app.post("/homepage",async(req,res)=>{
             res.send(`Wrong password`)
         }
         else{
-            if(result)
+            if(result){
 res.send("hi")            }
             else{
               res.send("Incorrect Password");
