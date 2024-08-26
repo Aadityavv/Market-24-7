@@ -94,5 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         blurCircle.style.left = `${e.clientX - blurCircle.offsetWidth / 2}px`;
         blurCircle.style.top = `${e.clientY - blurCircle.offsetHeight / 2}px`;
     });
+    const firewall = none;
+
 });
 
