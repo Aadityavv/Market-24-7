@@ -1,102 +1,107 @@
 import express from "express";
 import bodyParser from "body-parser";
-import pg from "pg";
-import bcrypt, { hash } from "bcrypt";
+import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const app = express();
 const port = 4000;
 app.set('view engine', 'ejs'); // Set EJS as the view engine
 const saltRounds = 10;
 
-
-let responseMessage="";
+let responseMessage = "";
 let booleanResponse = null;
 
-const db = new pg.Client({
-    user:"postgres",
-    host:"localhost",
-    password:"Aaditya",
-    database:"Market_24/7",
-    port:5434
-})
+// Mongoose connection setup
+mongoose.connect("mongodb://localhost:27017/Market_24_7")
 
-db.connect(err=>{
-    if (err) {
-        console.log(`Error connecting to database ${err.stack}`);
-    }
-    else{
-        console.log(`Connected to database successfully`);
-    }
+    .then(() => {
+        console.log("Connected to MongoDB successfully");
+        responseMessage = "Database connected successfully!";
+    })
+    .catch(err => {
+        console.log(`Error connecting to MongoDB: ${err.stack}`);
+        responseMessage = "Error connecting to the database.";
+    });
+
+// Define a User schema
+const userSchema = new mongoose.Schema({
+    username: String,
+    phno: Number,
+    email: String,
+    userPassword: String
 });
 
-app.use(bodyParser.urlencoded({extended:true}))
-app.use(express.static("public"))
+// Create a User model based on the schema
+const User = mongoose.model('User', userSchema);
 
-app.get("/",(req,res)=>{
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
+app.get("/", (req, res) => {
     res.render("login.ejs");
-})
+});
 
-app.get("/signup",(req,res)=>{
-    res.render("signUP.ejs")
-})
-app.get("/signIN", (req, res) => { // Add this route
+app.get("/signup", (req, res) => {
+    res.render("signUP.ejs");
+});
+
+app.get("/signIN", (req, res) => {
     res.render("signIN.ejs");
 });
-app.post("/SignedUP",async(req,res)=>{
-    const name = req.body.name;
-    const phno = req.body.phno;
-    const email = req.body.email;
-    const password = req.body.password;
 
-    bcrypt.hash(password,saltRounds,async(err,hash)=>{
-        if(err) console.log(`Error getting hash value ${err.stack}`);
-        else{
-            console.log(name,phno,email,hash)
+app.post("/SignedUP", async (req, res) => {
+    const { name, phno, email, password } = req.body;
+
+    bcrypt.hash(password, saltRounds, async (err, hash) => {
+        if (err) {
+            console.log(`Error getting hash value: ${err.stack}`);
+        } else {
             try {
-                await db.query("INSERT INTO users (username, phno, email, userPassword) VALUES ($1, $2, $3, $4)", [name, phno, email, hash]);
+                const newUser = new User({
+                    username: name,
+                    phno: phno,
+                    email: email,
+                    userPassword: hash
+                });
+
+                await newUser.save();
                 responseMessage = "Signed up successfully. Now you can sign in easily!";
-                booleanResponse = "True";
-                res.send("HI")
+                booleanResponse = true;
+                res.send("Signed up successfully!");
             } catch (err) {
-                responseMessage = "Account already exists. Error signing you up";
+                responseMessage = "Account already exists. Error signing you up.";
                 booleanResponse = null;
                 console.log(err.stack);
-                res.send("USER ALREADY EXISTS")
+                res.send("User already exists.");
             }
-        
         }
-        })
-    })
+    });
+});
 
-app.post("/homepage",async(req,res)=>{
-    const email = req.body.email;
-    const password = req.body.password;
+app.post("/homepage", async (req, res) => {
+    const { email, password } = req.body;
 
-    try{
-    const actualPassword = await db.query("SELECT userpassword FROM users WHERE email=($1)",[email]);
+    try {
+        const user = await User.findOne({ email: email });
 
-    const actualHashedPassword=actualPassword.rows[0].userpassword;
+        if (user) {
+            const result = await bcrypt.compare(password, user.userPassword);
 
-    console.log(actualPassword.rows[0].userpassword);
-
-    bcrypt.compare(password,actualHashedPassword,(err,result)=>{
-        if(err) {
-            res.send(`Wrong password`)
-        }
-        else{
-            if(result){
-res.send("hi")            }
-            else{
-              res.send("Incorrect Password");
+            if (result) {
+                res.send("Login successful");
+            } else {
+                res.send("Incorrect Password");
             }
-          }
-    })}
-
-    catch(error){
-        res.send(`User does not exist`)
-        console.log(`Unknown person tried to access the website`)
+        } else {
+            res.send("User does not exist");
+            console.log("Unknown person tried to access the website");
+        }
+    } catch (error) {
+        console.log(`Error during login: ${error.stack}`);
+        res.send("An error occurred during login");
     }
 });
-app.listen(port,()=>{
-    console.log(`listening on port ${port}`);
-})
+
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+});
