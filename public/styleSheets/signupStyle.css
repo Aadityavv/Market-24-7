@@ -86,6 +86,7 @@ form > label{
     border-radius: 5%;
     padding-top: 0%;
     cursor:default;   
+    z-index: 1;
 }
 
 
@@ -132,7 +133,7 @@ body.light-theme p {
     margin-top: -40vh;
     pointer-events: none;
     cursor: none;
-    
+    z-index: -1;
 }
 
 @media screen and (max-width:915px) {

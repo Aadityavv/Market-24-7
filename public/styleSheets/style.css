@@ -52,8 +52,8 @@ body {
     margin-left: -30%;
     margin-top: -20%;
     display: inline-block;
-    border-radius: 50%;
-    filter: blur(200px);
+    border-radius: 25%;
+    filter: blur(100px);
     position: absolute;
     animation: upDownMotion 3s ease-in-out infinite;
 }
