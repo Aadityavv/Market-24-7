@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
 const app = express();
-const port = 3000;
+const port = 4000;
 app.set('view engine', 'ejs'); // Set EJS as the view engine
 const saltRounds = 10;
 
